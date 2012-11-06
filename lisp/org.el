@@ -14765,9 +14765,10 @@ and the new value.")
 	  (goto-char (car range))
 	  (if (re-search-forward
 	       (org-re-property-keyword property) (cdr range) t)
-	      (progn
-		(delete-region (match-beginning 0) (match-end 0))
-		(goto-char (match-beginning 0)))
+	      (let ((mbeg (match-beginning 0))
+		    (mend (match-end 0)))
+		(delete-region mbeg mend)
+		(goto-char mbeg))
 	    (goto-char (cdr range))
 	    (insert "\n")
 	    (backward-char 1)
