@@ -54,9 +54,11 @@
 	   (subject (notmuch-show-get-subject))
 	   (to (notmuch-show-get-to))
 	   (from (notmuch-show-get-from))
+	   (date (notmuch-show-get-date))
 	   desc link)
       (org-store-link-props :type "notmuch" :from from :to to
-       			    :subject subject :message-id message-id)
+       			    :subject subject :message-id message-id
+			    :date date)
       (setq desc (org-email-link-description))
       (setq link (concat "notmuch:"  "id:" message-id))
       (org-add-link-props :link link :description desc)
