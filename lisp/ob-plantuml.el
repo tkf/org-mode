@@ -71,7 +71,7 @@ This function is called by `org-babel-execute-src-block'."
 			(org-babel-process-file-name out-file)))))
     (unless (file-exists-p org-plantuml-jar-path)
       (error "Could not find plantuml.jar at %s" org-plantuml-jar-path))
-    (with-temp-file in-file (insert (concat "@startuml\n" body "\n@enduml")))
+    (with-temp-file in-file (insert body))
     (message "%s" cmd) (org-babel-eval cmd "")
     nil)) ;; signal that output has already been written to file
 
